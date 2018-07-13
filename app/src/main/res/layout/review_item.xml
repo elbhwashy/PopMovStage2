@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/detail_item_layout"
+    android:background="#FF525B89">
+
+    <TextView
+        android:id="@+id/textView_author"
+        style="@style/detail_item_title"
+        tools:text="Author name"/>
+
+    <TextView
+        android:id="@+id/textView_content"
+        style="@style/detail_item"
+        tools:text="Review text"/>
+
+</LinearLayout>

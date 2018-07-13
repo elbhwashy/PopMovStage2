@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/detail_item_layout"
+    android:background="#f61e0f">
+
+    <TextView
+        android:id="@+id/textView_trailer_name"
+        style="@style/detail_item_title"
+        tools:text="Movie name"/>
+
+    <TextView
+        android:id="@+id/textView_trailer_type"
+        style="@style/detail_item"
+        tools:text="Youtube"/>
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">PopMovStage2</string>
+    <string name="app_title_popular">Popular</string>
+    <string name="app_title_highest">Top rated</string>
+    <string name="app_title_favorites">Favorites</string>
+
+    <string name="poster_description">Movie Poster</string>
+
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">Settings</string>
+
+    <string name="settings_api_key_label">The Movie Database Api key</string>
+    <string name="settings_api_key_key" translatable="false">api_key</string>
+    <string name="settings_api_key_default" translatable="false">enter api key</string>
+
+    <string name="settings_search_label">Search</string>
+    <string name="settings_search_key" translatable="false">search_criteria</string>
+    <string name="settings_search_default" translatable="false">@string/settings_search_most_popular_value</string>
+
+    <string name="settings_search_most_popular_label">Most popular</string>
+    <string name="settings_search_most_popular_value" translatable="false">popular</string>
+
+    <string name="settings_search_highest_rated_label">Highest rated</string>
+    <string name="settings_search_highest_rated_value" translatable="false">top_rated</string>
+
+    <string name="settings_search_favorites_label">Favorites</string>
+    <string name="settings_search_favorites_value" translatable="false">favorites</string>
+
+    <string name="error_message">Error fetching data from server.\nHave you entered your api key in the settings?</string>
+    <string name="no_favorites">There are no movies marked as favorites</string>
+
+    <string name="detail_error_message">Movie details not available</string>
+    <string name="details_title">Movie details</string>
+
+    <string name="rating_of10">/10</string>
+    <string name="add_to_favorites">Movie added to favorites</string>
+    <string name="remove_from_favorites">Movie removed from favorites</string>
+
+    <string name="review_label">Reviews</string>
+    <string name="no_reviews">No reviews available</string>
+    <string name="error_message_reviews">Error fetching data from server.</string>
+
+    <string name="trailer_label">Trailers</string>
+    <string name="no_trailers">No trailers available</string>
+    <string name="error_message_trailers">Error fetching data from server.</string>
+
+    <string name="BUNDLE_API_KEY">api_key</string>
+    <string name="BUNDLE_ORDER_BY">order_by</string>
+
+    <string name="EXTRA_MOVIE_ID">extra_movie_id</string>
+    <string name="EXTRA_API_KEY">api_key</string>
+
+</resources>
