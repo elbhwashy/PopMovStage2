@@ -10,8 +10,8 @@
     <string name="settings_title">Settings</string>
 
     <string name="settings_api_key_label">The Movie Database Api key</string>
-    <string name="settings_api_key_key" translatable="false">b9c396b11187cafde092bd288f0909c1</string>     // here put your api_key
-    <string name="settings_api_key_default" translatable="false">b9c396b11187cafde092bd288f0909c1</string>  // here put your api_key
+    <string name="settings_api_key_key" translatable="false">api_key</string>     // here put your api_key
+    <string name="settings_api_key_default" translatable="false">enter api key </string>  // here put your api_key
 
     <string name="settings_search_label">Search</string>
     <string name="settings_search_key" translatable="false">search_criteria</string>
@@ -44,10 +44,10 @@
     <string name="no_trailers">No trailers available</string>
     <string name="error_message_trailers">Error fetching data from server.</string>
 
-    <string name="BUNDLE_API_KEY">b9c396b11187cafde092bd288f0909c1</string>    // here put your api_key
+    <string name="BUNDLE_API_KEY">api_key</string>    // here put your api_key
     <string name="BUNDLE_ORDER_BY">order_by</string>
 
     <string name="EXTRA_MOVIE_ID">extra_movie_id</string>
-    <string name="EXTRA_API_KEY">b9c396b11187cafde092bd288f0909c1</string>    // here put your api_key
+    <string name="EXTRA_API_KEY">api_key</string>    // here put your api_key
 
 </resources>
