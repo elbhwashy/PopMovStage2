@@ -40,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Picasso.get()
                 .load(posterUrl.toString())
                 .placeholder(R.mipmap.poster)
+                .error(R.mipmap.error)
                 .into(holder.imageView);
     }
 
