@@ -1,5 +1,6 @@
 package com.stage2.move.pop.popmovstage2.activities;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -18,18 +19,25 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
     }
 
-    public static class NewsAppPreferenceFragment extends PreferenceFragment
-            implements Preference.OnPreferenceChangeListener{
-
+    public static class NewsAppPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener{
+        private Context context;
+        private Preference section;
+        private Preference orderBy;
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
-
-            Preference section = findPreference(getString(R.string.settings_api_key_key));
+            section = findPreference(getString(R.string.settings_api_key_key));
             bindPreferenceSummaryToValue(section);
 
-            Preference orderBy = findPreference(getString(R.string.settings_search_key));
+            orderBy = findPreference(getString(R.string.settings_search_key));
+            bindPreferenceSummaryToValue(orderBy);
+        }
+
+        @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            bindPreferenceSummaryToValue(section);
             bindPreferenceSummaryToValue(orderBy);
         }
 
