@@ -19,15 +19,18 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
     private List<FavoriteEntry> favoriteEntries;
     private Context context;
+    private LayoutInflater layoutInflater;
+    private FavoriteAdapter.ItemClickListener itemClickListener;
 
     public FavoriteAdapter(Context context) {
+        this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
+
     }
 
     @Override
     public FavoriteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(this.context)
-                .inflate(R.layout.favorite_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.favorite_item, parent, false);
 
         return new FavoriteViewHolder(view);
     }
@@ -62,20 +65,33 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         return this.favoriteEntries;
     }
 
-    public interface ItemClickListener {
-        void onItemClickListener(int itemId);
-    }
-
-    class FavoriteViewHolder extends RecyclerView.ViewHolder {
+    public class FavoriteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView textViewTitle;
         ImageView imageViewImage;
 
-        public FavoriteViewHolder(View itemView) {
+        FavoriteViewHolder(View itemView) {
             super(itemView);
 
             textViewTitle = (TextView)itemView.findViewById(R.id.textView_favorite_title);
             imageViewImage = (ImageView) itemView.findViewById(R.id.imageView_favorite_poster);
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            if (itemClickListener != null) itemClickListener.onItemClickListener(view, getAdapterPosition());
+        }
+    }
+
+    public FavoriteEntry getFavoriteItem(int id) {
+        return favoriteEntries.get(id);
+    }
+    public void setClickListener(FavoriteAdapter.ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
+    public interface ItemClickListener {
+        void onItemClickListener(View view, int position);
     }
 }

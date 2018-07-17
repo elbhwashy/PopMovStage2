@@ -11,26 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.stage2.move.pop.popmovstage2.activities.MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.stage2.move.pop.popmovstage2.activities.DetailActivity"
+            android:name=".activities.DetailActivity"
             android:label="@string/details_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.stage2.move.pop.popmovstage2.activities.MainActivity" />
         </activity>
         <activity
-            android:name="com.stage2.move.pop.popmovstage2.activities.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:label="@string/settings_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.stage2.move.pop.popmovstage2.activities.MainActivity" />
         </activity>
+        <activity android:name=".activities.FavoriteDetailActivity"></activity>
     </application>
 
 </manifest>

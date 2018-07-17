@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
@@ -36,8 +37,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener,LoaderManager.LoaderCallbacks<String>{
+public class MainActivity extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener,LoaderManager.LoaderCallbacks<String>
+        , FavoriteAdapter.ItemClickListener{
 
+    private String selectedMode;
     private RecyclerView movieRecyclerView;
     private RecyclerViewAdapter movieJSonDataAdapter;
     private ProgressBar movieLoadingIndicator;
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
     private TextView movieNoFavorites;
 
     private FavoriteDatabase movieFavoriteDatabase;
-    private FavoriteAdapter movieFavoriteDatabaseAdapter;
+    private FavoriteAdapter movieFavoriteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                 getString(R.string.settings_api_key_key),
                 "");
 
-        String selectedMode  = sharedPrefs.getString(
+        selectedMode  = sharedPrefs.getString(
                 getString(R.string.settings_search_key),
                 getString(R.string.settings_search_most_popular_value)
         );
@@ -85,8 +88,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
 
             movieRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-            movieFavoriteDatabaseAdapter = new FavoriteAdapter(this);
-            movieRecyclerView.setAdapter(movieFavoriteDatabaseAdapter);
+            movieFavoriteAdapter = new FavoriteAdapter(this);
+            movieFavoriteAdapter.setClickListener(MainActivity.this);
+            movieRecyclerView.setAdapter(movieFavoriteAdapter);
 
             movieLoadingIndicator.setVisibility(View.VISIBLE);
             movieRecyclerView.setVisibility(View.INVISIBLE);
@@ -113,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
                             });
 
                             int pos = viewHolder.getAdapterPosition();
-                            FavoriteEntry favoriteEntry = movieFavoriteDatabaseAdapter.getFavorites().get(pos);
+                            FavoriteEntry favoriteEntry = movieFavoriteAdapter.getFavorites().get(pos);
 
                             movieFavoriteDatabase.favoriteDao().deleteFavorite(favoriteEntry);
                         }
@@ -145,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         mainViewModel.getFavorites().observe(this, new Observer<List<FavoriteEntry>>() {
             @Override
             public void onChanged(@Nullable List<FavoriteEntry> favoriteEntries) {
-                movieFavoriteDatabaseAdapter.setFavorites(favoriteEntries);
+                movieFavoriteAdapter.setFavorites(favoriteEntries);
                 final int favoriteCount = favoriteEntries.size();
 
                 runOnUiThread(new Runnable() {
@@ -249,4 +253,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewAdapt
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onItemClickListener(View view, int position) {
+        FavoriteEntry clickedMovie = movieFavoriteAdapter.getFavoriteItem(position);
+        Intent intent = new Intent(this, FavoriteDetailActivity.class);
+        intent.putExtra(FavoriteEntry.EXTRA_NAME_MOVIEDATA, clickedMovie);
+        startActivity(intent);
+
+    }
+
 }

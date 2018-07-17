@@ -60,7 +60,7 @@ public class MovieData implements Parcelable  {
         dest.writeString(releaseDate);
     }
 
-    private void readFromParcel(Parcel in) {
+      private void readFromParcel(Parcel in) {
         id = in.readInt();
         title = in.readString();
         voteAverage = in.readDouble();

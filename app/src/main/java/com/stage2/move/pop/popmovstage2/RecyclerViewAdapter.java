@@ -25,7 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public RecyclerViewAdapter(Context context, List<MovieData> data) {
         this.layoutInflater = LayoutInflater.from(context);
         this.movieData = data;
-        context = context;
+        this.context = context;
     }
 
     @Override
